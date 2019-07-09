@@ -1,0 +1,2 @@
+class Wisdom < ApplicationRecord
+end
