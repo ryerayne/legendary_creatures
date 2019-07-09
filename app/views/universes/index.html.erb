@@ -1,0 +1,13 @@
+<h1>Universes</h1>
+
+<div><%= link_to 'Create Universe', new_universe_path %></div>
+<br />
+
+<% @universes.each do |universe| %>
+    <h3><%= universe.name %><h3>
+    <p><%= universe.description %><p>
+    <%= link_to 'Visit Universe', universe %> | 
+    <%= link_to 'Edit', edit_universe_path(universe) %> | 
+    <%= link_to 'Delete', universe, method: :delete, data: { confirm: 'For real?' } %>
+    <br />
+<% end %>
