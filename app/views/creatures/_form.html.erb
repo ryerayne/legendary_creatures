@@ -1,10 +1,10 @@
-<%= form_for(@universe) do |f| %>
-    <% if @universe.errors.any? %>
+<%= form_for(@creature) do |f| %>
+    <% if @creature.errors.any? %>
       <div id="error_explanation">
         <h2>There were some errors:</h2>
   
         <ul>
-          <% @universe.errors.full_messages.each do |message| %>
+          <% @creature.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
