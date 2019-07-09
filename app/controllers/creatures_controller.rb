@@ -9,15 +9,11 @@ class CreaturesController < ApplicationController
     end
   
     def show
-      if params[:universe_id]
         @universe = Universe.find_by(id: params[:universe_id])
         @creature = @universe.creatures.find_by(id: params[:id])
         if @creature.nil?
-          redirect_to universe_creatures_path(@universe), alert: "Creature not found"
+            redirect_to universe_creatures_path(@universe), alert: "Creature not found"
         end
-      else
-        @creature = Creature.find(params[:id])
-      end
     end
   
     def new
