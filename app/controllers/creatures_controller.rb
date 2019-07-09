@@ -1,14 +1,10 @@
 class CreaturesController < ApplicationController
     def index
-        if params[:universe_id]
-            @universe = Universe.find_by(id: params[:universe_id])
-            if @universe.nil?
-               redirect_to universes_path, alert: "Universe not found"
-            else
-                @creatures = @universe.creatures
-            end
+        @universe = Universe.find_by(id: params[:universe_id])
+        if @universe.nil?
+            redirect_to universes_path, alert: "Universe not found"
         else
-            @creatures = Creature.all
+            @creatures = @universe.creatures
         end
     end
   

@@ -1,11 +1,11 @@
-<h1>Universes</h1>
+<h1>Creatures</h1>
 
-<div><%= link_to 'Create Universe', new_universe_path %></div>
-<br />
 
-<% @universes.each do |universe| %>
-    <h3><%= universe.name %></h3>
-    <p><%= universe.description %><p>
-    <%= link_to 'Visit Universe', universe %>   
+<% @creatures.each do |creature| %>
+    <h3><%= creature.name %></h3>
+    <p><%= creature.description %><p>
+    <%= link_to 'Meet creature.name', creature %>   
     <br />
 <% end %>
+
+<%= link_to "Document New Creature", new_universe_creature(@universe) %>
