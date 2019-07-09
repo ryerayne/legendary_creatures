@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_194608) do
+ActiveRecord::Schema.define(version: 2019_07_09_195013) do
 
   create_table "creatures", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "wisdom"
     t.integer "universe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
