@@ -1,0 +1,10 @@
+<h2><%= @universe.name %></h2>
+<p>
+  <%= @universe.description %>
+</p>
+
+<p><%= link_to 'Meet Creatures', universe_creatures_path(@universe) %></p>
+
+<%= link_to 'Back to Multiverse', universes_path %> | 
+<%= link_to 'Edit', edit_universe_path(@universe) %> | 
+<%= link_to 'Delete', @universe, method: :delete, data: { confirm: 'For real?' } %>

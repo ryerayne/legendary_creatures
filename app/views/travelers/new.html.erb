@@ -1,7 +1,3 @@
-<%= form_for :traveler, url: '/travelers' do |f| %>
-    Name: <%= f.text_field :username %><br>
-    Username: <%= f.text_field :username %><br>
-    Password: <%= f.password_field :password %><br>
-    Password Confirmation: <%= f.password_field :password_confirmation %>
-    <%= f.submit "Submit" %>
-  <% end %>
+<h3>Sign Up</h3>
+
+<%= render 'form' %>
