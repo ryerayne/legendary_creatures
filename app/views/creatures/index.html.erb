@@ -1,5 +1,4 @@
-<h1>Creatures</h1>
-
+<h1>Creatures of <%= link_to @universe.name, @universe%></h1>
 
 <% @creatures.each do |creature| %>
     <h3><%= creature.name %></h3>

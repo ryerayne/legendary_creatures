@@ -41,11 +41,12 @@ class CreaturesController < ApplicationController
   
     def update
       @creature = Creature.find(params[:id])
-  
+      @universe = Universe.find_by(id: params[:universe_id])
+
       @creature.update(creature_params)
   
       if @creature.save
-        redirect_to @creature
+        redirect_to universe_creature_path(@universe, @creature)
       else
         render :edit
       end
