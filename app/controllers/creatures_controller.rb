@@ -17,21 +17,26 @@ class CreaturesController < ApplicationController
     end
   
     def new
-      @creature = Creature.new
+        @universe = Universe.find_by(id: params[:universe_id])
+        @creature = Creature.new
     end
   
     def create
       @creature = Creature.new(creature_params)
+      @universe = Universe.find_by(id: params[:universe_id])
+      @creature.universe = @universe
+      @creature.save
   
       if @creature.save
-        redirect_to @creature
+        redirect_to universe_creature_path(@universe, @creature)
       else
         render :new
       end
     end
   
     def edit
-      @creature = Creature.find(params[:id])
+        @universe = Universe.find_by(id: params[:universe_id])
+        @creature = Creature.find(params[:id])
     end
   
     def update
@@ -48,14 +53,15 @@ class CreaturesController < ApplicationController
   
     def destroy
       @creature = Creature.find(params[:id])
+      @universe = Universe.find_by(id: params[:universe_id])
       @creature.destroy
       flash[:notice] = "Creature deleted."
-      redirect_to creatures_path
+      redirect_to universe_creatures_path(@universe)
     end
   
     private
   
     def creature_params
-      params.require(:creature).permit(:name, :universe_name, :description)
+      params.require(:creature).permit(:name, :universe_id, :description)
     end
 end

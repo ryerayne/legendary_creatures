@@ -4,8 +4,8 @@
 <% @creatures.each do |creature| %>
     <h3><%= creature.name %></h3>
     <p><%= creature.description %><p>
-    <%= link_to 'Meet creature.name', creature %>   
+    <%= link_to 'Meet this creature', universe_creature_path(@universe, creature) %>   
     <br />
 <% end %>
-
-<%= link_to "Document New Creature", new_universe_creature(@universe) %>
+<br>
+<%= link_to "Document New Creature", new_universe_creature_path(@universe) %>
