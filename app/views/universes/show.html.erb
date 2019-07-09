@@ -3,7 +3,8 @@
   <%= @universe.description %>
 </p>
 
-<%= link_to 'Meet Creatures', edit_universe_path(@universe) %>
+<p><%= link_to 'Meet Creatures', universe_creatures_path(@universe) %></p>
 
+<%= link_to 'Back to Multiverse', universes_path %> | 
 <%= link_to 'Edit', edit_universe_path(@universe) %> | 
 <%= link_to 'Delete', @universe, method: :delete, data: { confirm: 'For real?' } %>
