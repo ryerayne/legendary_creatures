@@ -1,2 +1,5 @@
 class Creature < ApplicationRecord
+    belongs_to :universe
+    has_many :traveler_creatures
+    has_many :travelers, through: :traveler_creatures
 end
