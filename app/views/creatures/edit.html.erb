@@ -1,6 +1,6 @@
 <h3>Editing <%= @creature.name %></h3>
 
-<%= form_for [@universe, @creature], :url => universe_creatures_path do |f| %>
+<%= form_for [@universe, @creature], :url => universe_creature_path(@universe, @creature) do |f| %>
     <% if @creature.errors.any? %>
       <div id="error_explanation">
         <h2>There were some errors:</h2>
