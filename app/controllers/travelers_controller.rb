@@ -16,6 +16,26 @@ class TravelersController < ApplicationController
         else 
         end
     end
+
+    def edit
+        @traveler = Traveler.find(params[:id])
+    end
+
+    def update
+        @traveler = Traveler.find(params[:id])
+        if @traveler.update(traveler_params)
+            redirect_to @traveler
+        else
+            render :edit
+        end
+    end
+    
+    def destroy
+        @traveler = Traveler.find(params[:id])
+        @traveler.destroy
+        session.delete :traveler_id
+        redirect_to :root
+    end
      
     private
     

@@ -1,10 +1,10 @@
-<h2><%= @universe.name %></h2>
+<h2>Welcome, <%= @traveler.name %>!</h2>
 <p>
-  <%= @universe.description %>
+  Username: <%= @traveler.username %>
 </p>
 
 <p><%= link_to 'Meet Creatures', universe_creatures_path(@universe) %></p>
 
-<%= link_to 'Back to Multiverse', universes_path %> | 
-<%= link_to 'Edit', edit_universe_path(@universe) %> | 
-<%= link_to 'Delete', @universe, method: :delete, data: { confirm: 'For real?' } %>
+<%= link_to 'Go to Multiverse', universes_path %> | 
+<%= link_to 'Edit', edit_traveler_path(@traveler) %> | 
+<%= link_to 'Delete', @traveler, method: :delete, data: { confirm: 'For real?' } %>
