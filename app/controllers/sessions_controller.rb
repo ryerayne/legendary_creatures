@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-    
     def new 
     end
 
@@ -12,6 +11,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :traveler_id
-        redirect_to controller: 'application', action: 'welcome'
+        redirect_to :root
       end
 end
