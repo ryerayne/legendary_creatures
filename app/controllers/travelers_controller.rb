@@ -4,9 +4,14 @@ class TravelersController < ApplicationController
     end 
 
     def create
-        @traveler = Traveler.create(traveler_params)
-        session[:traveler_id] = @traveler.id
-        redirect_to traveler_path(@traveler)
+        @traveler = Traveler.new(traveler_params)
+        if @traveler.valid? 
+            @traveler.save
+            session[:traveler_id] = @traveler.id
+            redirect_to traveler_path(@traveler)
+        else
+            render :new
+        end
     end
 
     def show 
