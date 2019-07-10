@@ -5,6 +5,6 @@
 
 <p><%= link_to 'Go to Multiverse', universes_path %></p>
 
-<%= link_to "Sign Out", :signout%>
-<%= link_to 'Edit Profile', edit_traveler(@traveler) %> | 
+<%= link_to "Sign Out", :signout_path%> | 
+<%= link_to 'Edit Profile', edit_traveler_path(@traveler) %> | 
 <%= link_to 'Delete Account', @traveler, method: :delete, data: { confirm: 'For real?' } %>

@@ -4,7 +4,7 @@ class TravelersController < ApplicationController
     end 
 
     def create
-        Traveler.create(traveler_params)
+        @traveler = Traveler.create(traveler_params)
         session[:traveler_id] = @traveler.id
         redirect_to traveler_path(@traveler)
     end
