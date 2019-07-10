@@ -61,6 +61,15 @@ class CreaturesController < ApplicationController
       flash[:notice] = "Creature deleted."
       redirect_to universe_creatures_path(@universe)
     end
+
+    def collect
+      @creature = Creature.find(params[:creature][:id])
+      @traveler = Traveler.find(session[:traveler_id])
+
+      @creature.collect_wisdom(@traveler)
+
+      redirect_to universe_creature_path(@universe, @creature)
+    end
   
     private
   

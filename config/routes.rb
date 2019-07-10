@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   post '/signout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
 
- # post '/users/ride' => 'users#ride'
+  post '/creatures/collect' => 'creatures#collect'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
