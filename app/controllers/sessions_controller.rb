@@ -3,13 +3,23 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @traveler = Traveler.find_by(username: params[:username])
-        if @traveler && @traveler.authenticate(params[:password])
+        if auth['uid']
+            @traveler = Traveler.find_or_create_by(uid: auth['uid']) do |t|
+                t.name = auth['info']['name']
+                t.username = auth['info']['email']
+            end
+       
             session[:traveler_id] = @traveler.id
             redirect_to @traveler
         else 
-            @message = "Incorrect Login Information"
-            render :new
+            @traveler = Traveler.find_by(username: params[:username])
+            if @traveler && @traveler.authenticate(params[:password])
+                session[:traveler_id] = @traveler.id
+                redirect_to @traveler
+            else 
+                @message = "Incorrect Login Information"
+                render :new
+            end
         end
     end
 
