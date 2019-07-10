@@ -2,6 +2,11 @@ class UniversesController < ApplicationController
     before_action :require_login
     skip_before_action :require_login, only: [:index, :show]
 
+    def most_creatures
+        @universe = Universe.most_creatures.first
+        render :show
+    end
+
     def index
         @universes = Universe.all
     end
@@ -40,11 +45,6 @@ class UniversesController < ApplicationController
         @universe = Universe.find(params[:id])
         @universe.destroy
         redirect_to universes_url
-    end
-
-    def most_creatures
-        @universe = Universe.most_creatures.first
-        render :show
     end
     
     private
