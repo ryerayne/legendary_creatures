@@ -4,13 +4,21 @@ class SessionsController < ApplicationController
 
     def create
         if auth
-            @traveler = Traveler.find_or_create_by(uid: auth['uid']) do |t|
-                t.name = auth['info']['name']
-                t.username = auth['info']['email']
+            @traveler = Traveler.find_by(uid: auth['uid'])
+            
+            if !@traveler  
+                @traveler = Traveler.new 
+                @traveler.uid = auth['uid']
+                @traveler.name = auth['info']['name']
+                @traveler.username = auth['info']['email']
+                @traveler.password = SecureRandom.hex(8)
+                @traveler.save
+            else
             end
        
             session[:traveler_id] = @traveler.id
             redirect_to @traveler
+
         else 
             @traveler = Traveler.find_by(username: params[:username])
             if @traveler && @traveler.authenticate(params[:password])
