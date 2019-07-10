@@ -3,8 +3,8 @@
   Username: <%= @traveler.username %>
 </p>
 
-<p><%= link_to 'Meet Creatures', universe_creatures_path(@universe) %></p>
+<p><%= link_to 'Go to Multiverse', universes_path %></p>
 
-<%= link_to 'Go to Multiverse', universes_path %> | 
-<%= link_to 'Edit', edit_traveler_path(@traveler) %> | 
-<%= link_to 'Delete', @traveler, method: :delete, data: { confirm: 'For real?' } %>
+<%= link_to "Sign Out", :signout%>
+<%= link_to 'Edit Profile', edit_traveler(@traveler) %> | 
+<%= link_to 'Delete Account', @traveler, method: :delete, data: { confirm: 'For real?' } %>
