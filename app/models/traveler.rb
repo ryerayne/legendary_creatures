@@ -7,6 +7,7 @@ class Traveler < ApplicationRecord
     has_many :wisdoms, through: :creatures
 
     validates :username, uniqueness: true
+    validates :username, presence: true
 
     def collect_wisdom(creature)
         self.creatures << creature 

@@ -52,6 +52,6 @@ class TravelersController < ApplicationController
     end
 
     def set_traveler
-        set_traveler
+        @traveler = Traveler.find(params[:id])
     end
 end
