@@ -7,4 +7,16 @@ class Traveler < ApplicationRecord
     has_many :wisdoms, through: :creatures
 
     validates :username, uniqueness: true
+
+    def collect_wisdom(creature)
+        self.creatures << creature 
+    end
+
+    def has_wisdom?(creature) 
+        if self.creatures.include?(creature) 
+            "You have collected this wisdom." 
+        else
+            false
+        end
+    end
 end

@@ -5,15 +5,4 @@ class Creature < ApplicationRecord
     has_one :wisdom
 
     validates :name, presence: true
-
-    def collect_wisdom(traveler)
-        traveler.creatures << self 
-    end
-
-    def has_wisdom?(traveler) 
-        if traveler.creatures.include?(self) 
-            "You have collected this wisdom" 
-        else
-        end
-    end
 end
