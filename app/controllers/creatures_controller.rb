@@ -11,8 +11,8 @@ class CreaturesController < ApplicationController
     end
   
     def show
-        @universe = Universe.find_by(id: params[:universe_id])
-        @creature = Creature.find_by(id: params[:id])
+        set_creature
+        set_universe
         @traveler = Traveler.find(session[:traveler_id])
 
         if @creature.nil?
@@ -26,13 +26,13 @@ class CreaturesController < ApplicationController
     end
   
     def new
-        @universe = Universe.find_by(id: params[:universe_id])
-        @creature = Creature.new
+      @creature = Creature.new
+      set_universe
     end
   
     def create
       @creature = Creature.new(creature_params)
-      @universe = Universe.find_by(id: params[:universe_id])
+      set_universe
       @wisdom = Wisdom.new(words: params[:creature][:wisdom])
       @creature.universe = @universe
       @creature.save
@@ -47,13 +47,13 @@ class CreaturesController < ApplicationController
     end
   
     def edit
-        @universe = Universe.find_by(id: params[:universe_id])
-        @creature = Creature.find(params[:id])
+        set_creature
+        set_universe
     end
   
     def update
-      @creature = Creature.find(params[:id])
-      @universe = Universe.find_by(id: params[:universe_id])
+      set_creature
+      set_universe
 
       @creature.update(creature_params)
       @creature.wisdom.words = params[:creature][:wisdom]
@@ -67,8 +67,8 @@ class CreaturesController < ApplicationController
     end
   
     def destroy
-      @creature = Creature.find(params[:id])
-      @universe = Universe.find_by(id: params[:universe_id])
+      set_creature
+      set_universe
       @creature.wisdom.destroy
       @creature.destroy
       redirect_to universe_creatures_path(@universe)
@@ -76,8 +76,8 @@ class CreaturesController < ApplicationController
 
     def collect
       @creature = Creature.find(params[:creature][:id])
-      @traveler = Traveler.find(session[:traveler_id])
       @universe = Universe.find_by(id: params[:universe][:id])
+      set_traveler
 
       @traveler.collect_wisdom(@creature)
 
@@ -90,7 +90,7 @@ class CreaturesController < ApplicationController
       params.require(:creature).permit(:name, :universe_id, :description)
     end
 
-    def set_universe 
-      @universe = Universe.find_by(id: params[:universe_id])
+    def set_creature
+      @creature = Creature.find_by(id: params[:id])
     end
 end
