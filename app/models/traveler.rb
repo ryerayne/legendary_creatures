@@ -13,10 +13,6 @@ class Traveler < ApplicationRecord
     end
 
     def has_wisdom?(creature) 
-        if self.creatures.include?(creature) 
-            "You have collected this wisdom." 
-        else
-            false
-        end
+        self.creatures.include?(creature) 
     end
 end

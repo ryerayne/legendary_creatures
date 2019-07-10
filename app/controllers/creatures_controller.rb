@@ -4,7 +4,7 @@ class CreaturesController < ApplicationController
     def index
         @universe = Universe.find_by(id: params[:universe_id])
         if @universe.nil?
-            redirect_to universes_path, alert: "Universe not found"
+            redirect_to universes_path, alert: "Universe not found."
         else
             @creatures = @universe.creatures
         end
@@ -13,8 +13,15 @@ class CreaturesController < ApplicationController
     def show
         @universe = Universe.find_by(id: params[:universe_id])
         @creature = @universe.creatures.find_by(id: params[:id])
+        @traveler = Traveler.find(session[:traveler_id])
+
         if @creature.nil?
-            redirect_to universe_creatures_path(@universe), alert: "Creature not found"
+            redirect_to universe_creatures_path(@universe), alert: "Creature not found."
+        elsif @universe.nil? 
+          redirect_to universes_path, alert: "Universe not found."
+        elsif @traveler.has_wisdom?(@creature) 
+          @wisdom = @creature.wisdom.words
+        else
         end
     end
   
@@ -66,7 +73,7 @@ class CreaturesController < ApplicationController
       @creature = Creature.find(params[:creature][:id])
       @traveler = Traveler.find(session[:traveler_id])
 
-      @creature.collect_wisdom(@traveler)
+      @traveler.collect_wisdom(@creature)
 
       redirect_to universe_creature_path(@universe, @creature)
     end
