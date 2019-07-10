@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
             redirect_to @traveler
         else 
             @message = "Incorrect Login Information"
+            render :new
         end
     end
 
