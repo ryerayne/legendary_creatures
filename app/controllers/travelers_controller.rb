@@ -18,7 +18,7 @@ class TravelersController < ApplicationController
     end
 
     def show 
-        @traveler = Traveler.find(params[:id])
+        set_traveler
         if session[:traveler_id] != @traveler.id 
             redirect_to :root
         else 
@@ -26,11 +26,11 @@ class TravelersController < ApplicationController
     end
 
     def edit
-        @traveler = Traveler.find(params[:id])
+        set_traveler
     end
 
     def update
-        @traveler = Traveler.find(params[:id])
+        set_traveler
         if @traveler.update(traveler_params)
             redirect_to @traveler
         else
@@ -39,7 +39,7 @@ class TravelersController < ApplicationController
     end
     
     def destroy
-        @traveler = Traveler.find(params[:id])
+        set_traveler
         @traveler.destroy
         session.delete :traveler_id
         redirect_to :root
@@ -49,5 +49,9 @@ class TravelersController < ApplicationController
     
     def traveler_params
         params.require(:traveler).permit(:name, :uid, :username, :password, :password_confirmation)
+    end
+
+    def set_traveler
+        set_traveler
     end
 end

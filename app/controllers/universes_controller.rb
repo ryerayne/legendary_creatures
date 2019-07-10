@@ -12,7 +12,7 @@ class UniversesController < ApplicationController
     end
     
     def show
-        @universe = Universe.find(params[:id])
+        set_universe
     end
     
     def new
@@ -20,7 +20,7 @@ class UniversesController < ApplicationController
     end
     
     def edit
-        @universe = Universe.find(params[:id])
+        set_universe
     end
     
     def create
@@ -33,7 +33,7 @@ class UniversesController < ApplicationController
     end
     
     def update
-        @universe = Universe.find(params[:id])
+        set_universe
         if @universe.update(universe_params)
             redirect_to @universe
         else
@@ -42,7 +42,7 @@ class UniversesController < ApplicationController
     end
     
     def destroy
-        @universe = Universe.find(params[:id])
+        set_universe
         @universe.destroy
         redirect_to universes_url
     end
@@ -53,5 +53,9 @@ class UniversesController < ApplicationController
         params.require(:universe).permit(
         :name, :description
         )
+    end
+
+    def set_universe 
+        @universe = Universe.find_by(id: params[:id])
     end
 end

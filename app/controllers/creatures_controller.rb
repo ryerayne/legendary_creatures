@@ -2,27 +2,27 @@ class CreaturesController < ApplicationController
   before_action :require_login
 
     def index
-        set_universe
-        if @universe.nil?
-            redirect_to universes_path, alert: "Universe not found."
-        else
-            @creatures = @universe.creatures
-        end
+      set_universe
+      if @universe.nil?
+          redirect_to universes_path, alert: "Universe not found."
+      else
+          @creatures = @universe.creatures
+      end
     end
   
     def show
-        set_creature
-        set_universe
-        @traveler = Traveler.find(session[:traveler_id])
+      set_creature
+      set_universe
+      @traveler = Traveler.find(session[:traveler_id])
 
-        if @creature.nil?
-            redirect_to universe_creatures_path(@universe), alert: "Creature not found."
-        elsif @universe.nil? 
-          redirect_to universes_path, alert: "Universe not found."
-        elsif @traveler.has_wisdom?(@creature) 
-          @wisdom = @creature.wisdom.words
-        else
-        end
+      if @creature.nil?
+          redirect_to universe_creatures_path(@universe), alert: "Creature not found."
+      elsif @universe.nil? 
+        redirect_to universes_path, alert: "Universe not found."
+      elsif @traveler.has_wisdom?(@creature) 
+        @wisdom = @creature.wisdom.words
+      else
+      end
     end
   
     def new
@@ -47,8 +47,8 @@ class CreaturesController < ApplicationController
     end
   
     def edit
-        set_creature
-        set_universe
+      set_creature
+      set_universe
     end
   
     def update
@@ -77,7 +77,7 @@ class CreaturesController < ApplicationController
     def collect
       @creature = Creature.find(params[:creature][:id])
       @universe = Universe.find_by(id: params[:universe][:id])
-      set_traveler
+      @traveler = Traveler.find(session[:traveler_id])
 
       @traveler.collect_wisdom(@creature)
 
@@ -92,5 +92,9 @@ class CreaturesController < ApplicationController
 
     def set_creature
       @creature = Creature.find_by(id: params[:id])
+    end
+
+    def set_universe 
+      @universe = Universe.find_by(id: params[:universe_id])
     end
 end
