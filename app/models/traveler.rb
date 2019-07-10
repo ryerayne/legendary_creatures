@@ -5,4 +5,6 @@ class Traveler < ApplicationRecord
     has_many :universes, through: :traveler_universes
     has_many :creatures, through: :traveler_creatures
     has_many :wisdoms, through: :creatures
+
+    validates :username, uniqueness: true
 end
