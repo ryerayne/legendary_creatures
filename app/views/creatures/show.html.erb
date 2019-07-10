@@ -4,8 +4,7 @@
 </p>
 
 <% if @wisdom %> 
-<p><%= @wisdom %></p>
-<br>
+<p><i><%= @wisdom %></i></p>
 <p>Travelers who have collected this wisdom: </p>
 <ul> 
 <% @creature.travelers.each do |traveler| %>
@@ -13,12 +12,14 @@
 <% end %>
 </ul>
 <%= link_to 'View my Wisdom Collection', @traveler %>   
-
+<br>
 <% else %>
 <%= form_tag ({controller: 'creatures', action: 'collect', method: 'post'}) do %>
   <%= hidden_field(:creature, :id) %>
+  <%= hidden_field(:universe, :id) %>
   <%= submit_tag "Collect Wisdom" %>
   <% end %>
+  <br>
 <% end %> 
 <%= link_to 'Back to Universe', universe_creatures_path(@universe) %> | 
 <%= link_to 'Edit', edit_universe_creature_path(@universe, @creature) %> | 

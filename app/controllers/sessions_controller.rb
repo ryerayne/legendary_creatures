@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if auth['uid']
+        if auth
             @traveler = Traveler.find_or_create_by(uid: auth['uid']) do |t|
                 t.name = auth['info']['name']
                 t.username = auth['info']['email']

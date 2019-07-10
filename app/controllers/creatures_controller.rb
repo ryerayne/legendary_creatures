@@ -72,6 +72,7 @@ class CreaturesController < ApplicationController
     def collect
       @creature = Creature.find(params[:creature][:id])
       @traveler = Traveler.find(session[:traveler_id])
+      @universe = Universe.find_by(id: params[:universe][:id])
 
       @traveler.collect_wisdom(@creature)
 
