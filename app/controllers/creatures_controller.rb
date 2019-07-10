@@ -2,7 +2,7 @@ class CreaturesController < ApplicationController
   before_action :require_login
 
     def index
-        @universe = Universe.find_by(id: params[:universe_id])
+        set_universe
         if @universe.nil?
             redirect_to universes_path, alert: "Universe not found."
         else
@@ -88,5 +88,9 @@ class CreaturesController < ApplicationController
   
     def creature_params
       params.require(:creature).permit(:name, :universe_id, :description)
+    end
+
+    def set_universe 
+      @universe = Universe.find_by(id: params[:universe_id])
     end
 end
