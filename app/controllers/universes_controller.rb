@@ -41,6 +41,11 @@ class UniversesController < ApplicationController
         @universe.destroy
         redirect_to universes_url
     end
+
+    def most_creatures
+        @universe = Universe.most_creatures.first
+        render :show
+    end
     
     private
     
