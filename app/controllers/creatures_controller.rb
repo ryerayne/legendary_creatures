@@ -49,6 +49,7 @@ class CreaturesController < ApplicationController
     def edit
         @universe = Universe.find_by(id: params[:universe_id])
         @creature = Creature.find(params[:id])
+        @wisdom = @creature.wisdom.words
     end
   
     def update
@@ -56,6 +57,8 @@ class CreaturesController < ApplicationController
       @universe = Universe.find_by(id: params[:universe_id])
 
       @creature.update(creature_params)
+      @creature.wisdom.words = params[:creature][:wisdom]
+      @creature.wisdom.save
   
       if @creature.save
         redirect_to universe_creature_path(@universe, @creature)
