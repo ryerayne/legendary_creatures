@@ -59,3 +59,11 @@ goblin.save
 goblin_wisdom = Wisdom.new(words: "This wide world is full of such mad tales.")
 goblin_wisdom.creature = goblin
 goblin_wisdom.save
+
+direwolf = Creature.create(name: "Dire Wolf", description: "Direwolves are efficient solitary hunters and are extremely intelligent. Left to its own devices a solitary direwolf may join a pack of common wolves and establish dominance over it thanks to its larger size. The scent of direwolves can agitate dogs.")
+direwolf.universe = westeros_universe
+direwolf.save 
+
+direwolf_wisdom = Wisdom.new(words: "The gods gave us long lives but not great numbers, lest we overrun the world as deer will overrun a wood where there are no wolves to hunt them.")
+direwolf_wisdom.creature = direwolf
+direwolf_wisdom.save
