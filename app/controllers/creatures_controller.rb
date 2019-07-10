@@ -12,7 +12,7 @@ class CreaturesController < ApplicationController
   
     def show
         @universe = Universe.find_by(id: params[:universe_id])
-        @creature = @universe.creatures.find_by(id: params[:id])
+        @creature = Creature.find_by(id: params[:id])
         @traveler = Traveler.find(session[:traveler_id])
 
         if @creature.nil?
@@ -38,7 +38,7 @@ class CreaturesController < ApplicationController
       @creature.save
       @wisdom.creature = @creature
       @wisdom.save
-  
+
       if @creature.save
         redirect_to universe_creature_path(@universe, @creature)
       else
@@ -49,7 +49,6 @@ class CreaturesController < ApplicationController
     def edit
         @universe = Universe.find_by(id: params[:universe_id])
         @creature = Creature.find(params[:id])
-        @wisdom = @creature.wisdom.words
     end
   
     def update
@@ -70,8 +69,8 @@ class CreaturesController < ApplicationController
     def destroy
       @creature = Creature.find(params[:id])
       @universe = Universe.find_by(id: params[:universe_id])
+      @creature.wisdom.destroy
       @creature.destroy
-      flash[:notice] = "Creature deleted."
       redirect_to universe_creatures_path(@universe)
     end
 

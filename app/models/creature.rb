@@ -5,4 +5,8 @@ class Creature < ApplicationRecord
     has_one :wisdom
 
     validates :name, presence: true
+
+    def words_of_wisdom
+        self.wisdom.words
+    end
 end
