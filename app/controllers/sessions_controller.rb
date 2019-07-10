@@ -26,5 +26,11 @@ class SessionsController < ApplicationController
     def destroy
         session.delete :traveler_id
         redirect_to :root
-      end
+    end
+
+    private
+
+    def auth
+    request.env['omniauth.auth']
+    end
 end
