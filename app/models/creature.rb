@@ -5,4 +5,8 @@ class Creature < ApplicationRecord
     has_one :wisdom
 
     validates :name, presence: true
+
+    def collect_wisdom(user)
+        user.creatures << self 
+    end
 end
