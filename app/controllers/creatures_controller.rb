@@ -33,8 +33,11 @@ class CreaturesController < ApplicationController
     def create
       @creature = Creature.new(creature_params)
       @universe = Universe.find_by(id: params[:universe_id])
+      @wisdom = Wisdom.new(words: params[:creature][:wisdom])
       @creature.universe = @universe
       @creature.save
+      @wisdom.creature = @creature
+      @wisdom.save
   
       if @creature.save
         redirect_to universe_creature_path(@universe, @creature)
