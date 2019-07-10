@@ -1,4 +1,6 @@
 class CreaturesController < ApplicationController
+  before_action :require_login
+
     def index
         @universe = Universe.find_by(id: params[:universe_id])
         if @universe.nil?

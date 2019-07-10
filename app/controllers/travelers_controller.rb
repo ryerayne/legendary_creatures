@@ -47,5 +47,4 @@ class TravelersController < ApplicationController
     def traveler_params
         params.require(:traveler).permit(:name, :uid, :username, :password, :password_confirmation)
     end
-
 end
