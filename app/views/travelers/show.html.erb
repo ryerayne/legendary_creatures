@@ -8,6 +8,6 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='Sign Out'>
 <% end %>
-
+<br>
 <%= link_to 'Edit Profile', edit_traveler_path(@traveler) %> | 
 <%= link_to 'Delete Account', @traveler, method: :delete, data: { confirm: 'For real?' } %>
