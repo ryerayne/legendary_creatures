@@ -3,6 +3,13 @@
   Username: <%= @traveler.username %>
 </p>
 
+<h3>Your wisdom collection: </h3>
+<% @traveler.creatures.each do |creature| %>
+  <p><i><%= creature.wisdom.words %></i></p>
+  <p>  -  <%= link_to creature.name, universe_creature_path(creature.universe, creature) %></p>
+  <br>
+<% end %>
+
 <p><%= link_to 'Go to Multiverse', universes_path %></p>
 
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
