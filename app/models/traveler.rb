@@ -6,6 +6,9 @@ class Traveler < ApplicationRecord
     has_many :creatures, through: :traveler_creatures
     has_many :wisdoms, through: :creatures
 
+    scope :most_wisdom, -> { joins(:traveler_creatures).group("traveler_creatures.traveler_id").order("count(traveler_creatures.traveler_id) desc").limit(1) }
+
+
     validates :username, uniqueness: true
     validates :username, presence: true
 

@@ -2,6 +2,11 @@ class TravelersController < ApplicationController
     before_action :require_login
     skip_before_action :require_login, only: [:new, :create]
 
+    def most_wisdom
+        @traveler = Traveler.most_wisdom.first
+        render :most_wisdom
+    end
+
     def new 
         @traveler = Traveler.new
     end 

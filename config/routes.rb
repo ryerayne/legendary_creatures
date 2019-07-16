@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root :to => 'application#welcome'
 
   get '/universes/most_creatures' => 'universes#most_creatures'
+  get '/travelers/most_wisdom' => 'travelers#most_wisdom'
   resources :travelers
   resources :universes do 
     resources :creatures
