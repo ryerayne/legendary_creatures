@@ -18,8 +18,7 @@ $(document).on('turbolinks:load', function() {
         posting.done(function(data) {
             let universeName = data.name; 
             let universeDescription = data.description; 
-            let newUniverse = "<h3>" + universeName + "</h3><p>" + universeDescription + "</p>"; 
-
+            let newUniverse = "<h3>" + universeName + "</h3><div id='universe-" + data.id + "'<button class='js-more' data-id='" + data.id + "'>Learn More</button></div><br/>"
             $("#new-universe").html(newUniverse); 
           });
     });
