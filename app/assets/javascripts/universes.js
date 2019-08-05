@@ -4,7 +4,9 @@ $(document).on('turbolinks:load', function() {
         $.get("/universes/" + id + ".json", function(data) {
             const universe = data; 
             const description = "<p>" + universe["description"] + "</p>" 
-            $("#universe-" + id).html(description);
+            const universeLink = "<a href='/universes/" + id + "'>Visit Universe</a>"
+            console.log(universeLink); 
+            $("#universe-" + id).html(description + universeLink);
         });
     });
 });

@@ -12,7 +12,7 @@
 <% @universes.each do |universe| %>
     <h3><%= universe.name %></h3>
     <div id="universe-<%= universe.id %>">
-    </div>
     <button class="js-more" data-id="<%= universe.id %>">Learn More</button>
+    </div>
     <br />
 <% end %>
