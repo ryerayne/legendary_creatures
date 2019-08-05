@@ -9,10 +9,15 @@ class UniversesController < ApplicationController
 
     def index
         @universes = Universe.all
+        
     end
     
     def show
         set_universe
+        respond_to do |format|
+            format.html { render :show }
+            format.json { render json: @universe }
+        end
     end
     
     def new
