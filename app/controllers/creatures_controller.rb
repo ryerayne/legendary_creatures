@@ -15,6 +15,11 @@ class CreaturesController < ApplicationController
       set_universe
       @traveler = Traveler.find(session[:traveler_id])
 
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @creature }
+      end
+
       if @creature.nil?
           redirect_to universe_creatures_path(@universe), alert: "Creature not found."
       elsif @universe.nil? 
