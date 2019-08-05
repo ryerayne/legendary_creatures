@@ -17,4 +17,5 @@
 //= require_tree .
 //= require creatures
 //= require universes
+//= require travelers
 
