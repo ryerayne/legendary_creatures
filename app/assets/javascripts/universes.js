@@ -1,3 +1,5 @@
+
+
 $(document).on('turbolinks:load', function() {
     $(".js-more").on('click', function(event) {
         const id = $(this).data("id");
@@ -18,7 +20,7 @@ $(document).on('turbolinks:load', function() {
         posting.done(function(data) {
             let universeName = data.name; 
             let universeDescription = data.description; 
-            let newUniverse = "<h3>" + universeName + "</h3><div id='universe-" + data.id + "'<button class='js-more' data-id='" + data.id + "'>Learn More</button></div><br/>"
+            let newUniverse = "<h3>" + universeName + "</h3>"
             $("#new-universe").html(newUniverse); 
           });
     });
