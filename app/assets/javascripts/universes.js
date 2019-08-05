@@ -11,7 +11,17 @@ $(document).on('turbolinks:load', function() {
 
     $("form").on('submit', function(event) {
         event.preventDefault();
-        console.log("got it");
+        let values = $(this).serialize();
+ 
+        let posting = $.post('/universes', values);
+
+        posting.done(function(data) {
+            let universeName = data.name; 
+            let universeDescription = data.description; 
+            let newUniverse = "<h3>" + universeName + "</h3><p>" + universeDescription + "</p>"; 
+
+            $("#new-universe").html(newUniverse); 
+          });
     });
 
 });

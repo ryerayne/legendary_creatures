@@ -29,12 +29,14 @@ class UniversesController < ApplicationController
     end
     
     def create
-        @universe = Universe.new(universe_params)
-        if @universe.save
-            redirect_to @universe
-        else
-            render :new
-        end
+        @universe = Universe.create(universe_params)
+        render json: @universe, status: 201
+        
+        # if @universe.save
+        #     redirect_to @universe
+        # else
+        #     render :new
+        # end
     end
     
     def update
