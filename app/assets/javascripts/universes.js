@@ -4,14 +4,10 @@ function Universe(id, name, description) {
     this.description = description;
 }
 
-Universe.prototype.createDescription = function() {
+Universe.prototype.createDisplayHtml = function() {
     let description = "<p>" + this.description + "</p>"; 
-    return description; 
-};
-
-Universe.prototype.createLink = function() {
     let link = "<a href='/universes/" + this.id + "'>Visit Universe</a>"; 
-    return link; 
+    return description + link; 
 };
 
 $(document).on('turbolinks:load', function() {
@@ -20,9 +16,8 @@ $(document).on('turbolinks:load', function() {
         $.get("/universes/" + id + ".json", function(data) {
             const universeData = data; 
             let newUniverse = new Universe(id, universeData["name"], universeData["description"]); 
-            let description = newUniverse.createDescription(); 
-            let link = newUniverse.createLink(); 
-            $("#universe-" + id).html(description + link);
+            let displayHtml = newUniverse.createDisplayHtml(); 
+            $("#universe-" + id).html(displayHtml);
         });
     });
 
@@ -35,10 +30,9 @@ $(document).on('turbolinks:load', function() {
         posting.done(function(data) {
             let newUniverse = new Universe(data.id, data.name, data.description)
             let newUniverseName = "<h3>" + newUniverse.name + "</h3>"
-            let description = newUniverse.createDescription(); 
-            let link = newUniverse.createLink();
-
-            $("#new-universe").html(newUniverseName + description + link); 
+            let displayHtml = newUniverse.createDisplayHtml(); 
+            
+            $("#new-universe").html(newUniverseName + displayHtml); 
           });
     });
 
