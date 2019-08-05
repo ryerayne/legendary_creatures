@@ -9,7 +9,7 @@ class UniversesController < ApplicationController
 
     def index
         @universes = Universe.all
-        
+        @universe = Universe.new
     end
     
     def show

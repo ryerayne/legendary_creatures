@@ -8,4 +8,10 @@ $(document).on('turbolinks:load', function() {
             $("#universe-" + id).html(description + universeLink);
         });
     });
+
+    $("form").on('submit', function(event) {
+        event.preventDefault();
+        console.log("got it");
+    });
+
 });
