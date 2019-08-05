@@ -1,4 +1,13 @@
+function Universe(id, name, description) {
+    this.id = id; 
+    this.name = name;
+    this.description = description;
+}
 
+Universe.prototype.createLink = function() {
+    let link = "<a href='/universes/" + this.id + "'>Visit Universe</a>"; 
+    return link; 
+};
 
 $(document).on('turbolinks:load', function() {
     $(".js-more").on('click', function(event) {
