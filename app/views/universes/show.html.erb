@@ -3,7 +3,11 @@
   <%= @universe.description %>
 </p>
 
-<p><%= link_to 'Meet Creatures', universe_creatures_path(@universe) %></p>
+<div id="creatures-list">
+<button class="meet-creatures" data-id="<%= @universe.id %>">Meet Creatures</button>
+
+</div>
+<br>
 
 <%= link_to 'Back to Multiverse', universes_path %> | 
 <%= link_to 'Edit', edit_universe_path(@universe) %> | 

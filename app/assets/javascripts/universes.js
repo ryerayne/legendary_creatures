@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', function() {
             const universe = data; 
             const description = "<p>" + universe["description"] + "</p>" 
             const universeLink = "<a href='/universes/" + id + "'>Visit Universe</a>"
-            console.log(universeLink); 
             $("#universe-" + id).html(description + universeLink);
         });
     });
