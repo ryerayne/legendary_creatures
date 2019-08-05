@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
-    $(".js-more").on('click', function(event) {
+    $('selector').on('click', function(event) {
         console.log(event); 
     });
 });
+

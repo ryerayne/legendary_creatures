@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'dotenv-rails'
 
+ gem 'jquery-rails'
+ gem 'rails-ujs'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
