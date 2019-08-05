@@ -34,9 +34,11 @@ $(document).on('turbolinks:load', function() {
 
         posting.done(function(data) {
             let newUniverse = new Universe(data.id, data.name, data.description)
-            let universeDescription = data.description; 
-            let newUniverse = "<h3>" + newUniverse.name + "</h3>"
-            $("#new-universe").html(newUniverse); 
+            let newUniverseName = "<h3>" + newUniverse.name + "</h3>"
+            let description = newUniverse.createDescription(); 
+            let link = newUniverse.createLink();
+
+            $("#new-universe").html(newUniverseName + description + link); 
           });
     });
 
