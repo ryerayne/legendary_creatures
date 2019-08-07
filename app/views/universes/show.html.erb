@@ -9,6 +9,9 @@
 </div>
 <br>
 
+<button class="sort-creatures" data-id="<%= @universe.id %>">Sort Creatures</button><br>
+
+
 <%= link_to 'Back to Multiverse', universes_path %> | 
 <%= link_to 'Edit', edit_universe_path(@universe) %> | 
 <%= link_to 'Delete', @universe, method: :delete, data: { confirm: 'For real?' } %>
